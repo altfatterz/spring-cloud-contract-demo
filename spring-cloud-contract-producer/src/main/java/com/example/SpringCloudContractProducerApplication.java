@@ -10,4 +10,5 @@ public class SpringCloudContractProducerApplication {
 		SpringApplication.run(SpringCloudContractProducerApplication.class, args);
 	}
 
+
 }
