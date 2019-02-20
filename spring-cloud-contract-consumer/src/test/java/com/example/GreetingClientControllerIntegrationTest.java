@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest // default is WebEnvironment.MOCK
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK) // default is WebEnvironment.MOCK
 @AutoConfigureMockMvc
 @AutoConfigureStubRunner(ids = "com.example:spring-cloud-contract-producer:+", stubsMode = StubRunnerProperties.StubsMode.LOCAL)
 // starts wiremock instance with the stub contract on a random port

@@ -1,0 +1,4 @@
+stubrunner:
+  stubsMode: LOCAL
+  ids:
+    - com.example:spring-cloud-contract-producer:+:9876
