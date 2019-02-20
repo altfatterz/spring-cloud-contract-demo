@@ -17,9 +17,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+@SpringBootTest // default is WebEnvironment.MOCK
 @AutoConfigureMockMvc
-@AutoConfigureStubRunner(ids = "com.example:spring-cloud-contract-producer:+:stubs:8090", stubsMode = StubRunnerProperties.StubsMode.LOCAL)
+@AutoConfigureStubRunner(ids = "com.example:spring-cloud-contract-producer:+", stubsMode = StubRunnerProperties.StubsMode.LOCAL)
+// starts wiremock instance with the stub contract on a random port
 public class GreetingClientControllerIntegrationTest {
 
     @Autowired
