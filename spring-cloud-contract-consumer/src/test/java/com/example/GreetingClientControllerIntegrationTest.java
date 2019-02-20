@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK) // default is WebEnvironment.MOCK
+@SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureStubRunner(ids = "com.example:spring-cloud-contract-producer:+", stubsMode = StubRunnerProperties.StubsMode.LOCAL)
 // starts wiremock instance with the stub contract on a random port
@@ -28,10 +28,10 @@ public class GreetingClientControllerIntegrationTest {
 
     @Test
     public void greetingClient() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/greeting-client?name=Zoltan&lang=HU")
+        mockMvc.perform(MockMvcRequestBuilders.get("/greeting-client?name=Zoltan&lang=DE")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Szia Zoltan"));
+                .andExpect(content().string("Hallo Zoltan"));
     }
 
 }

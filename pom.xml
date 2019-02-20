@@ -16,6 +16,7 @@
     <modules>
         <module>spring-cloud-contract-consumer</module>
         <module>spring-cloud-contract-producer</module>
+        <module>discovery-service</module>
     </modules>
 
 </project>

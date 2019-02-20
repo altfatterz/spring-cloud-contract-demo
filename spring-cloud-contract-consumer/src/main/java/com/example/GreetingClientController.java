@@ -16,7 +16,7 @@ public class GreetingClientController {
     @GetMapping("/greeting-client")
     public String greet(@RequestParam("name") String name, @RequestParam("lang") String lang) {
 
-        ResponseEntity<String> entity = restTemplate.getForEntity("http://localhost:8080/greeting?lang=" + lang, String.class);
+        ResponseEntity<String> entity = restTemplate.getForEntity("http://spring-cloud-contract-producer/greeting?lang=" + lang, String.class);
 
         return entity.getBody() + " " + name;
 
