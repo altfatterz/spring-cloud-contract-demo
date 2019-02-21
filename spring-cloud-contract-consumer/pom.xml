@@ -32,6 +32,11 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
         <!-- spring cloud contract -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

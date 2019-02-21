@@ -1,20 +1,47 @@
 package com.example;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @RestController
 public class GreetingController {
 
-    @GetMapping("/greeting")
-    public String greet(@RequestParam(defaultValue = "EN") String lang) {
-        if (lang.equals("DE")) {
-            return "Hallo";
-        } else if (lang.equals("HU")) {
-            return "Szia";
+    private final GreetingRepository greetingRepository;
+
+    public GreetingController(GreetingRepository greetingRepository) {
+        this.greetingRepository = greetingRepository;
+    }
+
+    @GetMapping("/greetings/{lang}")
+    public ResponseEntity<Greeting> findGreeting(@PathVariable String lang) {
+        Greeting greeting = greetingRepository.findByLang(lang);
+        if (greeting == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(greeting, HttpStatus.OK);
         }
-        return "Hi";
+    }
+
+    @GetMapping("/greetings")
+    public Iterable<Greeting> allGreetings() {
+        return greetingRepository.findAll();
+    }
+
+    @PostMapping("/greetings")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createGreeting(@RequestBody Greeting greeting) {
+        greetingRepository.save(greeting);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public void handleConstraintViolation(HttpServletResponse response) throws IOException {
+        response.sendError(HttpStatus.CONFLICT.value(), "Greeting with this language already exists");
     }
 
 }
+
