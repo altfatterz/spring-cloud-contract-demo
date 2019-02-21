@@ -1,0 +1,9 @@
+description: Represents a successful scenario of getting a greeting
+
+request:
+  method: POST
+  url: /greetings
+  bodyFromFile: create-greating.json
+
+response:
+  status: 201

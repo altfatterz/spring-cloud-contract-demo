@@ -1,0 +1,11 @@
+description: Get a greeting
+
+request:
+  method: GET
+  url: /greetings/DE
+
+response:
+  status: 200
+  bodyFromFile: get-greeting.json
+  headers:
+    Content-Type: application/json;charset=UTF-8
