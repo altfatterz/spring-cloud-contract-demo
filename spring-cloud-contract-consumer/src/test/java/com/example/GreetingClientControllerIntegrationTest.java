@@ -28,10 +28,10 @@ public class GreetingClientControllerIntegrationTest {
 
     @Test
     public void greetingClient() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/greeting-client?name=Zoltan&lang=DE")
+        mockMvc.perform(MockMvcRequestBuilders.get("/greetings-client?name=Zoltan&lang=DE")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Hallo Zoltan"));
+                .andExpect(content().string("Hallo Zoltan!"));
     }
 
 }
