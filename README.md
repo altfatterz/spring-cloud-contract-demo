@@ -63,7 +63,7 @@ GET                                                        | GET
 ### Run stubs mappings via `spring cli`
 
 ```bash
-skd install sprinboot 2.0.8.RELEASE
+sdk install sprinboot 2.0.8.RELEASE
 spring install org.springframework.cloud:spring-cloud-cli:2.0.0.RELEASE 
 spring cloud stubrunner
 ```
